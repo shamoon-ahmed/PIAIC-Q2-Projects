@@ -1,0 +1,12 @@
+!pip install langchain langchain-google-genai
+
+from langchain_google_genai import ChatGoogleGenerativeAI
+from google.colab import userdata
+
+google_api_key = userdata.get('GEMINI_API_KEY')
+
+llm : ChatGoogleGenerativeAI = ChatGoogleGenerativeAI(model='gemini-1.5-flash',
+                             api_key=google_api_key,
+                             temperature=0.9)
+response = llm.invoke('Why are mangoes sweet?')
+response.content
